@@ -18,19 +18,17 @@
 			instances: 1,
 			id: '',
 			more_button: false,
-			onAdd: function() {
-				console.log('Adding new repetition', plugin.settings.debug);		 
+			onAdd: function($newset) {
+				if (plugin.settings.debug) {
+					console.log('Adding new repetition', $newset);
+				}
 			}
 		};
 
-		// plugin's properties will be available through this object like:
-		// plugin.settings.propertyName from inside the plugin or
-		// element.data('pluginName').settings.propertyName from outside the plugin, where "element" is the
-		// element the plugin is attached to;
-		plugin.settings = {}
+		plugin.settings = {};
 
-		var $el = $(element),	// reference to the jQuery version of DOM element the plugin is attached to
-			 el = element;		// reference to the actual DOM element
+		// Cache the jQuerified element
+		var $el = $(element);
 
 		// Called when the object is created
 		plugin.init = function() {
@@ -56,18 +54,13 @@
 			appendNumber($el, 1);
 		}
 
-		// public methods
-		// these methods can be called like:
-		// plugin.methodName(arg1, arg2, ... argn) from inside the plugin or
-		// element.data('autoRepeat').publicMethod(arg1, arg2, ... argn) from outside the plugin, where "element"
-		// is the element the plugin is attached to;
-
-		// a public method. for demonstration purposes only - remove it!
+		// Add a new repetition
 		plugin.repeat = function(num) {
 			num = (num > 0) ? num : 1;
 			for (var i=1; i <= num; i++) {
 				var $newset = $el.clone().insertBefore(plugin.settings.more_button);
 				appendNumber($newset, ++plugin.settings.instances);
+				plugin.settings.onAdd($newset);
 			}
 			return false;
 		}
@@ -78,7 +71,6 @@
 			$('input, label, select, textarea', $fieldset).each(function(index, el) {
 				var $el = $(el);
 				for (var x=0; x < attributes.length; x++) {
-					console.log(x, attributes[x]);
 					var attr = $el.attr(attributes[x]);
 					if (typeof attr == 'string' && attr.length > 0) {
 						attr = (num !== 1) ? attr.substr(0,attr.lastIndexOf('_')) : attr;
