@@ -1,4 +1,3 @@
-
 **Usage**
 
 *HTML*
@@ -51,11 +50,11 @@
 				<td><input type="text" name="first_name_1" /></td>
 				<td><input type="text" name="last_name_1" /></td>
 			</tr>
+			<div class="autoRepeat-more_button">
+				<button>Add Another</button>
+			</div>
 		</table>
 	</form>
-	<div class="autoRepeat-more_button">
-		<button>Add Another</button>
-	</div>
 
 
 *TODO*
