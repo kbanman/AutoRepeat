@@ -39,8 +39,9 @@
 			$el.data('autoRepeat-id', Math.round(Math.random() * new Date().getTime()));
 			console.log($el.data('autoRepeat-id'));
 
-			// Create the more button
-			plugin.settings.more_button = $('<div />')
+			// Create the more button, and make it a <tr> if the region was 
+			var container = (element.tagName.toLowerCase() == 'tr') ? 'tr' : 'div';
+			plugin.settings.more_button = $('<'+container+' />')
 				.addClass('autoRepeat-more_button')
 				.insertAfter($el)
 				.append($('<button />').text(plugin.settings.more_text))
