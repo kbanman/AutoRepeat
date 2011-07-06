@@ -1,6 +1,6 @@
-**Usage**
+***Usage**
 
-*HTML*
+**HTML**
 
 	<form>
 		<table>
@@ -16,7 +16,7 @@
 	</form>
 
 
-*Javascript*
+**Javascript**
 
 	$(document).ready(function() {
 	    
@@ -38,7 +38,7 @@
 	});
 
 
-*Resulting Markup*
+**Resulting Markup**
 
 	<form>
 		<table>
@@ -57,7 +57,7 @@
 	</form>
 
 
-*TODO*
+**TODO**
 
  - Customizable increment style
  - Ability to remove repetitions
