@@ -39,11 +39,13 @@
 			$el.data('autoRepeat-id', Math.round(Math.random() * new Date().getTime()));
 			console.log($el.data('autoRepeat-id'));
 
-			// Create the more button, and make it a <tr> if the region was 
-			var container = (element.tagName.toLowerCase() == 'tr') ? 'tr' : 'div';
-			plugin.settings.more_button = $('<'+container+' />')
-				.addClass('autoRepeat-more_button')
-				.insertAfter($el)
+			// Create the more button, and make it a <tr> if the region was a row
+			var table_row = (element.tagName.toLowerCase() == 'tr');
+			plugin.settings.more_button = table_row ? $('<tr />') : $('<div />');
+			var $container = table_row ? $('<td />').attr('colspan', element.cells.length).appendTo(plugin.settings.more_button) : plugin.settings.more_button;
+			plugin.settings.more_button.addClass('autoRepeat-more_button').insertAfter($el);
+
+			$container
 				.append($('<button />').text(plugin.settings.more_text))
 				.click(function(e) {
 					e.preventDefault();

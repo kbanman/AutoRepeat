@@ -50,9 +50,9 @@
 				<td><input type="text" name="first_name_1" /></td>
 				<td><input type="text" name="last_name_1" /></td>
 			</tr>
-			<div class="autoRepeat-more_button">
-				<button>Add Another</button>
-			</div>
+			<tr class="autoRepeat-more_button">
+				<td><button>Add Another</button></td>
+			</tr>
 		</table>
 	</form>
 
